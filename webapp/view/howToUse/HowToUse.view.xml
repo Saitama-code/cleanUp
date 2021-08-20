@@ -1,0 +1,31 @@
+<mvc:View controllerName="cleanup.controller.recycle.Recycle"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:f="sap.f"
+    xmlns:card="sap.f.cards"
+    xmlns:core="sap.ui.core"
+    xmlns:w="sap.ui.integration.widgets" displayBlock="true" height="100%"
+    xmlns:tnt="sap.tnt">
+    <Page title="Landing page" showHeader="false">
+        <tnt:ToolHeader>
+            <Button icon="sap-icon://home" text="{i18n>appName}" type="Transparent" press="onHomePress">
+                <layoutData>
+                    <OverflowToolbarLayoutData priority="NeverOverflow" />
+                </layoutData>
+            </Button>
+            <ToolbarSpacer/>
+            <Button text="{i18n>howToUse}" press="navToHowToUse"/>
+            <Button text="{i18n>aboutus}" press="navToAboutUs"/>
+        </tnt:ToolHeader>
+        <content>
+
+            </content>
+            <footer>
+                <OverflowToolbar>
+                    <ToolbarSpacer/>
+                    <Text text="{i18n>globalFooter} ❤️ {i18n>madeBy}"></Text>
+                </OverflowToolbar>
+            </footer>
+        </Page>
+    </mvc:View>

@@ -1,0 +1,144 @@
+{
+    "states": [
+        {
+            "state": "Jharkhand",
+            "district": [
+                {
+                    "name": "Gumla",
+                    "kabariwalas": [
+                        {
+                            "name": "Ashok Singh",
+                            "phone": "+911000000001",
+                            "rating": 4,
+                            "accept": [
+                                "plastic",
+                                "metal",
+                                "paper"
+                            ]
+                        },
+                        {
+                            "name": "Raju Shrivastav",
+                            "phone": "+911000000001",
+                            "rating": 4.4,
+                            "accept": [
+                                "plastic",
+                                "metal",
+                                "paper",
+                                "wood"
+                            ]
+                        }
+                    ],
+                    "plants": [
+                        {
+                            "name": "Re Brand",
+                            "phone": "+911000000001",
+                            "rating": 4.5,
+                            "accept": [
+                                "plastic",
+                                "concrete",
+                                "bricks",
+                                "wood"
+                            ]
+                        },
+                        {
+                            "name": "Clean It",
+                            "phone": "+911000000001",
+                            "rating": 4.5,
+                            "accept": [
+                                "plastic",
+                                "concrete",
+                                "bricks",
+                                "wood",
+                                "tiles",
+                                "pvc pipes",
+                                "glass",
+                                "metal"
+                            ]
+                        }
+                    ],
+                    "govContact": [
+                        {
+                            "name": "Vivaswan yadav",
+                            "phone": "+911000000001",
+                            "Designation": "muncipal commissioner",
+                            "email":"utkarsh@sap.com"
+                        },
+                        {
+                            "name": "Kajal Buchchan",
+                            "phone": "+911000000001",
+                            "Designation": "Dumping yard manager",
+                            "email":"utkarsh@sap.com"
+                        }
+                    ]
+                },
+                {
+                    "name": "Ranchi",
+                    "kabariwalas": [
+                        {
+                            "name": "Raju Singh",
+                            "phone": "+911000000001",
+                            "rating": 5,
+                            "accept": [
+                                "metal",
+                                "paper"
+                            ]
+                        },
+                        {
+                            "name": "Ashok Shrivastav",
+                            "phone": "+911000000001",
+                            "rating": 3.4,
+                            "accept": [
+                                "plastic",
+                                "metal",
+                                "paper",
+                                "wood"
+                            ]
+                        }
+                    ],
+                    "plants": [
+                        {
+                            "name": "New Life",
+                            "phone": "+911000000001",
+                            "rating": 4.6,
+                            "accept": [
+                                "plastic",
+                                "concrete",
+                                "bricks",
+                                "wood"
+                            ]
+                        },
+                        {
+                            "name": "Magic Mop",
+                            "phone": "+911000000001",
+                            "rating": 4.6,
+                            "accept": [
+                                "plastic",
+                                "concrete",
+                                "bricks",
+                                "wood",
+                                "tiles",
+                                "pvc pipes",
+                                "glass",
+                                "metal"
+                            ]
+                        }
+                    ],
+                    "govContact": [
+                        {
+                            "name": "Utkarsh yadav",
+                            "phone": "+911000000001",
+                            "Designation": "muncipal commissioner",
+                            "email":"utkarsh@sap.com"
+                        },
+                        {
+                            "name": "Vipin Buchchan",
+                            "phone": "+911000000001",
+                            "Designation": "Dumping yard manager",
+                            "email":"utkarsh@sap.com"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

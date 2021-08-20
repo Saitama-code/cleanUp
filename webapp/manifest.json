@@ -1,0 +1,208 @@
+{
+    "_version": "1.32.0",
+    "sap.app": {
+        "id": "cleanup",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "resources": "resources.json",
+        "ach": "ach"
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "sap-icon://task",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "flexEnabled": false,
+        "rootView": {
+            "viewName": "cleanup.view.home",
+            "type": "XML",
+            "async": true,
+            "id": "home"
+        },
+        "dependencies": {
+            "minUI5Version": "1.66.0",
+            "libs": {
+                "sap.ui.core": {},
+                "sap.m": {},
+                "sap.ui.layout": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "cleanup.i18n.i18n"
+                }
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "async": true,
+                "viewPath": "cleanup.view",
+                "controlAggregation": "pages",
+                "controlId": "app",
+                "clearControlAggregation": false
+            },
+            "routes": [
+                {
+                    "name": "home",
+                    "pattern": "home",
+                    "target": [
+                        "Targethome"
+                    ]
+                },
+                {
+                    "name": "AboutUs",
+                    "pattern": "AboutUs",
+                    "target": "AboutUs"
+                },
+                {
+                    "name": "LaunchPad",
+                    "pattern": "LaunchPad",
+                    "target": "LaunchPad"
+                },
+                {
+                    "name": "HowToUse",
+                    "pattern": "HowToUse",
+                    "target": "HowToUse"
+                },
+                {
+                    "name": "Recycle",
+                    "pattern": "Recycle",
+                    "target": "Recycle"
+                },
+                {
+                    "name": "Reuse",
+                    "pattern": "Reuse",
+                    "target": "Reuse"
+                },
+                {
+                    "name": "Solution",
+                    "pattern": "Solution",
+                    "target": "Solution"
+                },
+                {
+                    "name": "SignUp",
+                    "pattern": "SignUp",
+                    "target": "SignUp"
+                },
+                {
+                    "name": "Profile",
+                    "pattern": "Profile",
+                    "target": "Profile"
+                },
+                {
+                    "name": "NotYetReached",
+                    "pattern": "NotYetReached",
+                    "target": "NotYetReached"
+                },
+                {
+                    "name": "Market",
+                    "pattern": "Market",
+                    "target": "Market"
+                },{
+                    "name": "Sell",
+                    "pattern": "Sell",
+                    "target": "Sell"
+                }
+            ],
+            "targets": {
+                "Targethome": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewName": "home"
+                },
+                "LaunchPad": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "viewName": "launchpad.Launchpad"
+                },
+                "AboutUs": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "viewName": "aboutUs.AboutUs"
+                },
+                "Recycle": {
+                    "transition": "slide",
+                    "viewType": "XML",
+                    "viewName": "recycle.Recycle"
+                },
+                "Reuse": {
+                    "transition": "slide",
+                    "viewType": "XML",
+                    "viewName": "reuse.Reuse"
+                },
+                "HowToUse": {
+                    "transition": "slide",
+                    "viewType": "XML",
+                    "viewName": "howToUse.HowToUse"
+                },
+                "Solution": {
+                    "transition": "slide",
+                    "viewType": "XML",
+                    "viewName": "solution.Solution"
+                },
+                "SignUp": {
+                    "transition": "slide",
+                    "viewType": "XML",
+                    "viewName": "signUp.SignUp"
+                },
+                "Profile": {
+                    "transition": "slide",
+                    "viewType": "XML",
+                    "viewName": "profile.Profile"
+                },
+                "NotYetReached": {
+                    "transition": "slide",
+                    "viewType": "XML",
+                    "viewName": "notYetReached.NotYetReached"
+                },
+                "Market":{
+                    "transition": "slide",
+                    "viewType": "XML",
+                    "viewName": "market.Market"
+                },
+                "Sell":{
+                    "transition": "slide",
+                    "viewType": "XML",
+                    "viewName": "sell.Sell"
+                }
+            }
+        }
+    },
+    "sap.cloud": {
+        "public": true,
+        "service": "cleanup"
+    }
+}

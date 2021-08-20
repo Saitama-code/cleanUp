@@ -1,0 +1,73 @@
+<mvc:View controllerName="cleanup.controller.market.Market"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:f="sap.f"
+    xmlns:card="sap.f.cards"
+    xmlns:grid="sap.ui.layout.cssgrid"
+    xmlns:core="sap.ui.core"
+    xmlns:w="sap.ui.integration.widgets" displayBlock="true" height="100%"
+    xmlns:tnt="sap.tnt">
+    <Page title="Market" showHeader="false">
+        <tnt:ToolHeader>
+            <Button icon="sap-icon://home" text="{i18n>appName}" type="Transparent" press="onHomePress">
+                <layoutData>
+                    <OverflowToolbarLayoutData priority="NeverOverflow" />
+                </layoutData>
+            </Button>
+            <ToolbarSpacer/>
+            <Button text="{i18n>howToUse}" press="navToHowToUse"/>
+            <Button text="{i18n>aboutus}" press="navToAboutUs"/>
+        </tnt:ToolHeader>
+        <content>
+
+	<f:GridList
+		id="gridList"
+		headerText="Explore The Market 😊"
+		mode="SingleSelect"
+		items="{ path: 'marketItem>/product' }"
+		selectionChange="onSelectionChange"
+		delete="onDelete"
+		class="sapUiResponsiveContentPadding">
+		<f:customLayout>
+			<grid:GridBasicLayout gridTemplateColumns="repeat(auto-fit, minmax(16rem, 1fr))" gridGap="0.5rem" />
+		</f:customLayout>
+
+		<f:GridListItem
+			detailPress="onDetailPress"
+			press="onPress"
+			counter="{name}"
+			highlight="{quantity}"
+			type="{type}">
+			<VBox height="100%">
+				<Image src="{marketItem>ProductPicUrl}" width="100%" visible="{= ${onlyImage} ? true : false }" class="imageDisplayBlock" />
+				<HBox height="100%" class="sapUiSmallMargin" alignItems="Center" visible="{= ${onlyImage} ? false : true }">
+					<Image src="{marketItem>ProductPicUrl}" width="3rem" class="sapUiSmallMarginEnd" />
+                    	<grid:CSSGrid
+			id="grid1"
+			gridTemplateColumns="1fr 2fr"
+			gridGap="1rem">
+					<VBox>
+						<Title text="{marketItem>name}" wrapping="true" />
+						<Label text="{marketItem>quantity}" wrapping="true" />
+					</VBox>
+                    <VBox>
+                        <Title text="Description" wrapping="true"/>
+                        <Label text="{marketItem>comment}" wrapping="true"/>
+                    </VBox>
+
+		</grid:CSSGrid>
+                    
+				</HBox>
+			</VBox>
+		</f:GridListItem>
+	</f:GridList>
+        </content>
+        <footer>
+            <OverflowToolbar>
+                <ToolbarSpacer/>
+                <Text text="{i18n>globalFooter} ❤️ {i18n>madeBy}"></Text>
+            </OverflowToolbar>
+        </footer>
+        </Page>
+    </mvc:View>

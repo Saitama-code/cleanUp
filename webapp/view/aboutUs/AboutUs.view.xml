@@ -1,0 +1,90 @@
+<mvc:View controllerName="cleanup.controller.aboutUs.AboutUs"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:f="sap.f"
+    xmlns:card="sap.f.cards"
+    xmlns:core="sap.ui.core"
+    xmlns:w="sap.ui.integration.widgets" displayBlock="true" height="100%"
+    xmlns:tnt="sap.tnt">
+    <Page title="Landing page" showHeader="false">
+        <tnt:ToolHeader>
+            <Button icon="sap-icon://home" text="{i18n>appName}" type="Transparent" press="onHomePress">
+                <layoutData>
+                    <OverflowToolbarLayoutData priority="NeverOverflow" />
+                </layoutData>
+            </Button>
+            <ToolbarSpacer/>
+            <Button text="{i18n>howToUse}" press="navToHowToUse"/>
+            <Button text="{i18n>aboutus}" press="navToAboutUs"/>
+        </tnt:ToolHeader>
+        <content>
+
+            <FlexBox height="100px" alignItems="Center" justifyContent="Center">
+
+                <Label text="The Problem" class="myCustomText2" design="Bold"/>
+            </FlexBox>
+            <FlexBox alignItems="Center" justifyContent="Center">
+                <Text text="Construction and demolition wastes (CDW) have increasingly serious problems in environmental, social, and economic realms&#xA;India manages to recover and recycle only about 1% of its construction and demolition (C and D) waste​&#xA;99% remain strewn across, in landfills, or in plain sight everywhere which results in​&#xA;1. Increased Carbon Footprints​&#xA;2. Diminishing landfill space due to incremental quantities of these disposed wastes in it​&#xA;3. Depleted building materials when Construction Industry is already facing Material crunch​&#xA;5. The increase in contamination from landfills that lead to serious negative health effects​&#xA;5. Damage to the Environment leading to air and water pollution​"/>
+            </FlexBox>
+
+            <FlexBox height="100px" alignItems="Center" justifyContent="Center">
+
+                <Label text="The Solution" class="myCustomText2" design="Bold"/>
+                                </FlexBox>
+                                
+            <FlexBox height="100px" alignItems="Center" justifyContent="Center">
+                 <html:video   controls="" >
+                 <html:source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4"/>
+                </html:video>
+                </FlexBox>
+
+                <FlexBox alignItems="Center" justifyContent="Center">
+                    <Image src="img/solution.png" width="100%"/>
+                </FlexBox>
+                <FlexBox height="100px" alignItems="Center" justifyContent="Center">
+                    <Label text="Meet Our Team" class="myCustomText2" design="Bold"/>
+                </FlexBox>
+                <ScrollContainer width="100%" vertical="false" horizontal="true" focusable="true">
+
+                    <FlexBox alignItems="Start" justifyContent="Center">
+                        <HBox alignItems="Center">
+                            <VBox alignItems="Center" class="sapUiSmallMargin">
+                                <items>
+                                    <Avatar initials="es" displaySize="XL" showBorder="true" press="onPress"/>
+                                    <Text text="Person 1" class="sapUiSmallMarginTop"/>
+                                </items>
+                            </VBox>
+                            <VBox alignItems="Center" class="sapUiSmallMargin">
+                                <Avatar src="https://source.unsplash.com/1600x900/?naruto" displaySize="XL" showBorder="true" press="onPress"/>
+                                <Text text="Person 2" class="sapUiSmallMarginTop"/>
+                            </VBox>
+                            <VBox alignItems="Center" class="sapUiSmallMargin">
+                                <Avatar src="https://source.unsplash.com/1600x900/?naruto" displaySize="XL" showBorder="true" press="onPress"/>
+                                <Text text="Person 3" class="sapUiSmallMarginTop"/>
+                            </VBox>
+                            <VBox alignItems="Center" class="sapUiSmallMargin">
+                                <Avatar src="https://source.unsplash.com/1600x900/?naruto" displaySize="XL" showBorder="true" press="onPress"/>
+                                <Text text="Person 4" class="sapUiSmallMarginTop"/>
+                            </VBox>
+                            <VBox alignItems="Center" class="sapUiSmallMargin">
+                                <Avatar src="https://source.unsplash.com/1600x900/?naruto" displaySize="XL" showBorder="true" press="onPress"/>
+                                <Text text="Person 5" class="sapUiSmallMarginTop"/>
+                            </VBox>
+                            <VBox alignItems="Center" class="sapUiSmallMargin">
+                                <Avatar src="https://source.unsplash.com/1600x900/?naruto" displaySize="XL" showBorder="true" press="onPress"/>
+                                <Text text="Person 6" class="sapUiSmallMarginTop"/>
+                            </VBox>
+                        </HBox>
+                    </FlexBox>
+                </ScrollContainer>
+
+            </content>
+            <footer>
+                <OverflowToolbar>
+                    <ToolbarSpacer/>
+                    <Text text="{i18n>globalFooter} ❤️ {i18n>madeBy}"></Text>
+                </OverflowToolbar>
+            </footer>
+        </Page>
+    </mvc:View>

@@ -1,0 +1,55 @@
+<mvc:View controllerName="cleanup.controller.launchpad.Launchpad"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:f="sap.f"
+    xmlns:card="sap.f.cards"
+    xmlns:core="sap.ui.core"
+    xmlns:w="sap.ui.integration.widgets" displayBlock="true" height="100%"
+    xmlns:tnt="sap.tnt"
+    xmlns:grid="sap.ui.layout.cssgrid">
+        <App id="app" backgroundImage="https://wallpapercave.com/wp/wp2757852.gif" backgroundOpacity="1">
+            <pages>
+                <Page id="page" showHeader="false" backgroundDesign="Transparent">
+                    <tnt:ToolHeader>
+                        <Button icon="sap-icon://home" text="{i18n>appName}" type="Transparent" press="onCleanUpPress">
+                            <layoutData>
+                                <OverflowToolbarLayoutData priority="NeverOverflow" />
+                            </layoutData>
+                        </Button>
+                        <ToolbarSpacer/>
+                        <Button text="{i18n>howToUse}" press="navToHowToUse"/>
+                        <Button text="{i18n>aboutus}" press="navToAboutUs"/>
+	                    <Button icon="sap-icon://customer" ariaHasPopup="Menu" press="onPressProfile"/>
+                    </tnt:ToolHeader>
+                    <content>
+                        <ScrollContainer height="100%" width="100%" vertical="true">
+                            <FlexBox alignItems="Center" justifyContent="Center">
+                                <Label text="{i18n>chooseYourR}" class="myCustomText" design="Bold"/>
+                            </FlexBox>
+                            <FlexBox alignItems="Center" justifyContent="Center">
+                                <grid:CSSGrid gridTemplateColumns="1fr 1fr" gridGap="1rem">
+                                    <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{i18n>recycle}" subheader="For recycling" press="LaunchRecycle">
+                                        <TileContent>
+                                            <core:Icon src="sap-icon://e-care" size="2rem"/>
+                                        </TileContent>
+                                    </GenericTile>
+                                    <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{i18n>reuse}" subheader="For Reuse Click here" press="LaunchReuse">
+                                        <TileContent>
+                                            <core:Icon src="sap-icon://activate" size="2rem"/>
+                                        </TileContent>
+                                    </GenericTile>
+                                </grid:CSSGrid>
+                            </FlexBox>
+                        </ScrollContainer>
+                    </content>
+                    <footer>
+                        <OverflowToolbar>
+                            <ToolbarSpacer/>
+                            <Text text="{i18n>globalFooter} ❤️ {i18n>madeBy}"></Text>
+                        </OverflowToolbar>
+                    </footer>
+                </Page>
+            </pages>
+        </App>
+</mvc:View>

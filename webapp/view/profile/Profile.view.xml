@@ -1,0 +1,119 @@
+<mvc:View controllerName="cleanup.controller.profile.Profile"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:f="sap.f"
+    xmlns:card="sap.f.cards"
+    
+    xmlns:core="sap.ui.core"
+    xmlns:w="sap.ui.integration.widgets" displayBlock="true" height="100%"
+    xmlns:tnt="sap.tnt">
+    <Page title=" Your Profile" showHeader="false" >
+        <tnt:ToolHeader>
+            <Button icon="sap-icon://home" text="{i18n>appName}" type="Transparent" press="onHomePress">
+                <layoutData>
+                    <OverflowToolbarLayoutData priority="NeverOverflow" />
+                </layoutData>
+            </Button>
+            <ToolbarSpacer/>
+            <Button text="{i18n>howToUse}" press="navToHowToUse"/>
+            <Button text="{i18n>aboutus}" press="navToAboutUs"/>
+              <Button icon="sap-icon://customer" ariaHasPopup="Menu" press="onPressProfile"/>
+        </tnt:ToolHeader>
+        <content>
+         <Bar>
+                <contentLeft>
+                    
+                    <Button type="Attention" text="Edit" class="sapUiTinyMarginEnd" icon="sap-icon://edit" press="handelEditChanges"/>
+                </contentLeft>
+            </Bar>
+            <HBox alignContent="Center" wrap="Wrap">
+                <HBox>
+                <VBox alignItems="Center">
+					<Avatar
+                    class="sapUiTinyMargin"
+							initials="{user>/name}"
+							displaySize="XL"
+							displayShape="Circle"
+							press="onPress"/>
+                    <Text textAlign="Center" text="{user>/name}" class="sapUiTinyMarginTop"/>
+				
+				</VBox>
+                </HBox>
+                <VBox id="NonEditableProfileBox">
+                    <HBox  alignContent="Center" width="100%">
+                        <HBox>
+                            <Text text="First Name" class="customTextDark sapUiTinyMarginEnd"/>
+                            <Text text="{user>/firstName}" class="customTextDark sapUiTinyMarginEnd"/>
+                        </HBox>
+                        <HBox alignContent="Center">
+                            <Text text="Last Name" class="customTextDark sapUiTinyMarginEnd"/>
+                            <Text text="{user>/lastName}" class="customTextDark sapUiTinyMarginEnd"/>
+                        </HBox>
+                    </HBox>
+                    <HBox alignContent="Center">
+                        <HBox>
+                            <Text text="State" class="customTextDark sapUiTinyMarginEnd"/>
+                           <Text text="{user>/state}" class="customTextDark sapUiTinyMarginEnd"/>
+                        </HBox>
+                        <HBox alignContent="Center" >
+                            <Text text="District" class="customTextDark sapUiTinyMarginEnd"/>
+                             <Text text="{user>/district}" class="customTextDark sapUiTinyMarginEnd"/>
+                        </HBox>
+                    </HBox>
+                </VBox>
+
+
+
+                    <VBox id="EditableProfileBox">
+                    <HBox  alignContent="Center" width="100%">
+                        <HBox>
+                            <Text text="First Name" class="customTextDark sapUiTinyMarginEnd"/>
+                            <Input value="{NSuser>/firstName}"/>
+                        </HBox>
+                        <HBox alignContent="Center">
+                            <Text text="Last Name" class="customTextDark sapUiTinyMarginEnd"/>
+                            <Input value="{NSuser>/lastName}" valueLiveUpdate="true"/>
+                        </HBox>
+                    </HBox>
+                    <HBox alignContent="Center">
+                        <HBox>
+                            <Text text="State" class="customTextDark sapUiTinyMarginEnd"/>
+                           <ComboBox
+                           id="CBstate"
+                           change="StateChanged"
+			                	items="{
+			                		path: 'location>/states'
+			                	}">
+			                	<core:Item key="{location>state}" text="{location>state}" />
+			                </ComboBox>
+                        </HBox>
+                        <HBox alignContent="Center" >
+                            <Text text="District" class="customTextDark sapUiTinyMarginEnd"/>
+                             <ComboBox
+                           id="CBDistrict"
+                           change="DistrictChanged"
+			                	items="{
+			                		path: 'locationL>/'
+			                	}">
+			                	<core:Item key="{locationL>name}" text="{locationL>name}" />
+			                </ComboBox>
+                        </HBox>
+                    </HBox>
+                </VBox>
+            </HBox>
+
+            <Bar>
+                <contentRight>
+                    <Button type="Emphasized" text="Update" class="sapUiTinyMarginEnd" icon="sap-icon://save" press="handelSaveChanges"/>
+                </contentRight>
+            </Bar>
+            </content>
+            <footer>
+                <OverflowToolbar>
+                    <ToolbarSpacer/>
+                    <Text text="{i18n>globalFooter} ❤️ {i18n>madeBy}"></Text>
+                </OverflowToolbar>
+            </footer>
+        </Page>
+    </mvc:View>

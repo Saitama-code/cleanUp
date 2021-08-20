@@ -1,0 +1,32 @@
+{
+    "types":[
+        {
+            "name":"Plastic"
+        },
+        {
+            "name":"Metal"
+        },
+        {
+            "name":"Concrete"
+        },
+        {
+            "name":"Bricks"
+        },
+        {
+            "name":"Tiles"
+        },
+        {
+            "name":"PVC Pipes"
+        },
+        {
+            "name":"Wood"
+        },
+        {
+            "name":"Glass"
+        },
+        {
+            "name":"Paper"
+        }
+
+    ]
+}

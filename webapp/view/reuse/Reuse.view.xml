@@ -1,0 +1,51 @@
+<mvc:View controllerName="cleanup.controller.reuse.Reuse"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:f="sap.f"
+    xmlns:card="sap.f.cards"
+    xmlns:core="sap.ui.core"
+    xmlns:w="sap.ui.integration.widgets" displayBlock="true" height="100%"
+    xmlns:tnt="sap.tnt"
+    xmlns:grid="sap.ui.layout.cssgrid">
+    <Page title="Landing page" showHeader="false">
+        <tnt:ToolHeader>
+            <Button icon="sap-icon://home" text="{i18n>appName}" type="Transparent" press="onHomePress">
+                <layoutData>
+                    <OverflowToolbarLayoutData priority="NeverOverflow" />
+                </layoutData>
+            </Button>
+            <ToolbarSpacer/>
+            <Button text="{i18n>howToUse}" press="navToHowToUse"/>
+            <Button text="{i18n>aboutus}" press="navToAboutUs"/>
+        </tnt:ToolHeader>
+        <content>
+                        <ScrollContainer height="100%" width="100%" vertical="true">
+                            <FlexBox alignItems="Center" justifyContent="Center">
+                                <Label text="{i18n>chooseActivity}" class="myCustomText" design="Bold"/>
+                            </FlexBox>
+                            <FlexBox alignItems="Center" justifyContent="Center">
+                                <grid:CSSGrid gridTemplateColumns="1fr 1fr" gridGap="1rem">
+                                    <GenericTile  class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{i18n>buy}" subheader="Explore the Market Place" press="navToMarket">
+                                        <TileContent>
+                                            <core:Icon src="sap-icon://detail-view" size="2rem"/>
+                                            
+                                        </TileContent>
+                                    </GenericTile>
+                                    <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{i18n>sell}" subheader="See Your Orders or Create new Once" press="LaunchOrders">
+                                        <TileContent>
+                                            <core:Icon src="sap-icon://employee-lookup" size="2rem"/>
+                                        </TileContent>
+                                    </GenericTile>
+                                </grid:CSSGrid>
+                            </FlexBox>
+                        </ScrollContainer>
+            </content>
+            <footer>
+                <OverflowToolbar>
+                    <ToolbarSpacer/>
+                    <Text text="{i18n>globalFooter} ❤️ {i18n>madeBy}"></Text>
+                </OverflowToolbar>
+            </footer>
+        </Page>
+    </mvc:View>

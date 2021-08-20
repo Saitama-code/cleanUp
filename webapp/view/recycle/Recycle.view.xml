@@ -1,0 +1,73 @@
+<mvc:View controllerName="cleanup.controller.recycle.Recycle"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:f="sap.f"
+    xmlns:card="sap.f.cards"
+    xmlns:core="sap.ui.core"
+    xmlns:w="sap.ui.integration.widgets" displayBlock="true" height="100%"
+    xmlns:tnt="sap.tnt">
+    <Page title="Landing page" showHeader="false">
+        <tnt:ToolHeader>
+            <Button icon="sap-icon://home" text="{i18n>appName}" type="Transparent" press="onHomePress">
+                <layoutData>
+                    <OverflowToolbarLayoutData priority="NeverOverflow" />
+                </layoutData>
+            </Button>
+            <ToolbarSpacer/>
+            <Button text="{i18n>howToUse}" press="navToHowToUse"/>
+            <Button text="{i18n>aboutus}" press="navToAboutUs"/>
+            <Button icon="sap-icon://customer" ariaHasPopup="Menu" press="onPressProfile"/>
+        </tnt:ToolHeader>
+        <content>
+            <FlexBox alignItems="Center" class="sapUiMediumMargin" justifyContent="Center">
+                <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{i18n>recycle}" subheader="Click me to add waste" press="handelAddWaste">
+                    <TileContent>
+                        <core:Icon src="sap-icon://e-care" size="2rem" />
+                    </TileContent>
+                </GenericTile>
+            </FlexBox>
+
+            <Table id="_IDGenTable1"  class="sapUiContentPadding"  items="{/WastePile}" noDataText="Your dustbin is empty!">
+
+                <columns>
+                    <Column id="_IDGenColumn1">
+                        <Text id="_IDGenText1" text="{i18n>wasteType}" />
+                    </Column>
+                    <Column id="_IDGenColumn2">
+                        <Text id="_IDGenText2" text="{i18n>qunatity}" />
+                    </Column>
+                    <Column id="_IDGenColumn3">
+                        <Text id="_IDGenText3" text="{i18n>remarks}" />
+                    </Column>
+                    <Column id="_IDGenColumn4">
+                        <Text id="_IDGenText4" text="{i18n>actions}" />
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem id="_IDGenColumnListItem1">
+                        <cells>
+
+                            <ObjectIdentifier id="_IDGenObjectIdentifier1" title="{name}" />
+                            
+                            <Text id="_IDGenText5" text="{quantity}"/>
+                            <Text text="{remark}"/>
+                            <HBox id="_IDGenHBox1"  justifyContent="Start">
+                                <Button id="_IDGenButton2" class="sapUiMediumTinyEnd" icon="sap-icon://edit" press="handelEditDepartment" />
+                                <Button id="_IDGenButton3" class="sapUiMediumTinyStart" icon="sap-icon://delete" press="handelDeleteDepartment" />
+                            </HBox>
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+
+        </content>
+        <footer>
+            <OverflowToolbar>
+                <ToolbarSpacer/>
+                <Button text="Go to Disposal" press="onSubmitPress" type="Emphasized"/>
+                <Text text="{i18n>globalFooter} ❤️ {i18n>madeBy}"></Text>
+            </OverflowToolbar>
+        </footer>
+    </Page>
+</mvc:View>

@@ -1,0 +1,29 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:grid="sap.ui.layout.cssgrid"
+>
+	<Dialog id="_IDGenDialog1" title="Add New Waste Item" class="sapUiContentPadding">
+		
+		<grid:CSSGrid
+		
+		id="grid1"
+		gridTemplateColumns="1fr 2fr"
+		gridTemplateRows="1fr 1fr 1fr"
+		gridGap="1rem"
+		>
+		<Text text="Type of Waste:"/>
+            <ComboBox id="TypeOfWasteCB" change="updatedTypeOfWaste" valueState="Warning" valueStateText="Specify Type of waste" placeholder="Select From List" items="{
+					path: 'typeOfWasteModel>/types'
+				}">
+                                <core:Item key="{typeOfWasteModel>name}" text="{typeOfWasteModel>name}" />
+                            </ComboBox>
+        <Text text="Quantity:"/>
+		<Input id="quantityInput" placeholder="in Kgs"  valueState="Warning" valueStateText="Quantity is a must" value="{newWaste>/quantity}" type="Number" liveChange="handelQuantityChange" valueLiveUpdate="true" required ="true"/>
+		<Text text="Remarks:"/>
+		<Input id="remarkInput" placeholder="Remarks" valueState="Information" valueStateText="optional" value="{newWaste>/remark}" liveChange="handelRemarkChange" valueLiveUpdate="true"/>
+		<Button text="cancel" type="Reject" press="handelCancelAddWaste"/>
+		<Button text="add" type="Accept" press="handelConfirmAddWaste"/>
+	</grid:CSSGrid>
+	</Dialog>
+</core:FragmentDefinition>

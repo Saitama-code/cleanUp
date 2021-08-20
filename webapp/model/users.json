@@ -1,0 +1,34 @@
+{
+    "user": [
+        {
+            "name": "utkarsh",
+            "password": "io",
+            "state": "Jharkhand",
+            "district": "Gumla",
+            "firstName": "Utkarsh",
+            "lastName": ".",
+            "phone": "+911000000001",
+            "email": "utkarsh@sap.com"
+        },
+        {
+            "name": "naruto",
+            "password": "io",
+            "state": "Jharkhand",
+            "district": "Ranchi",
+            "firstName": "Naruto",
+            "lastName": "Uzamaki",
+            "phone": "+911000000001",
+            "email": "utkarsh@sap.com"
+        },
+        {
+            "name": "itachi",
+            "password": "demopass",
+            "firstName": "Itachi",
+            "lastName": "Uchiha",
+            "state": "Jharkhand",
+            "district": "Ranchi",
+            "phone": "+913772344239",
+            "email": "utkarsh@sap.com"
+        }
+    ]
+}

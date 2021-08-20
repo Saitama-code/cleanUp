@@ -1,0 +1,36 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:grid="sap.ui.layout.cssgrid"
+>
+	<Dialog id="newMarketItemFragment" title="Here is Your Product" class="sapUiContentPadding">
+		
+		<grid:CSSGrid
+		id="grid2"
+		gridTemplateColumns="1fr 2fr"
+		gridTemplateRows="1fr 1fr 1fr"
+		gridGap="1rem"
+		>
+		<Text text="Name of Product:"/>
+        <Input value="{currObject>/name}"/>
+
+        <Text text="Quantity:"/>
+        <Input value="{currObject>/quantity}"/>
+
+		<Text text="Comments:"/>
+        <Input value="{currObject>/comment}"/>
+
+        <Text text="Owner:"/>
+        <Input value="{currObject>/owner}" type="Ghost" editable="false"/>
+	</grid:CSSGrid>
+    <grid:CSSGrid
+		id="grid3"
+		gridTemplateColumns="1fr 1fr 1fr"
+		gridGap="1rem"
+		>
+         <Button  text="cancel" type="Emphasized" press="handelCloseObject"/>
+        <Button  text="Post" type="Emphasized" press="handelPostObject"/>
+      
+    </grid:CSSGrid>
+	</Dialog>
+</core:FragmentDefinition>

@@ -1,0 +1,39 @@
+<mvc:View controllerName="cleanup.controller.home" xmlns:html="http://www.w3.org/1999/xhtml" xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc" xmlns:f="sap.f" xmlns:card="sap.f.cards" xmlns:core="sap.ui.core" xmlns:w="sap.ui.integration.widgets" displayBlock="true" height="100%" xmlns:tnt="sap.tnt" xmlns:grid="sap.ui.layout.cssgrid">
+    <App id="app" backgroundImage="img/loginPage.jpg" backgroundOpacity="1">
+        <pages>
+            <Page id="page" showHeader="false" backgroundDesign="Transparent">
+                <tnt:ToolHeader>
+                    <Button icon="sap-icon://home" text="{i18n>appName}" type="Transparent" press="onHomePress">
+                        <layoutData>
+                            <OverflowToolbarLayoutData priority="NeverOverflow" />
+                        </layoutData>
+                    </Button>
+                    <ToolbarSpacer />
+                    <Button text="Sign Up" type="Emphasized" press="handelSignUp"/>
+                </tnt:ToolHeader>
+                <content>
+                    <core:Fragment fragmentName="cleanup.view.fragments.BusyDialog" type="XML" />
+                    <VBox fitContainer="true" justifyContent="Center" alignItems="Center" alignContent="Center">
+                        <items>
+                            <HBox>
+                                <Text text="UserName" class="customTextlogin sapUiMediumSmallEnd" />
+                                <Input id="uid" placeholder="Enter UserName" tooltip="Enter Your UserName" value="{/name}"></Input>
+                            </HBox>
+                            <HBox>
+                                <Text text="Password" class="customTextlogin sapUiMediumSmallEnd" />
+                                <Input id="pasw" placeholder="Enter your Password" type="Password"  submit="onLoginTap" tooltip="Enter Your Password" valueLiveUpdate="true" liveChange="psChange" value="{/password}"></Input>
+                            </HBox>
+                            <Button width="12rem" text="Login" type="Emphasized" press="onLoginTap"></Button>
+                        </items>
+                    </VBox>
+                </content>
+                <footer>
+                    <OverflowToolbar>
+                        <ToolbarSpacer />
+                        <Text text="{i18n>globalFooter} ❤️ {i18n>madeBy}"></Text>
+                    </OverflowToolbar>
+                </footer>
+            </Page>
+        </pages>
+    </App>
+</mvc:View>

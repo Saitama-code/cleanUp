@@ -1,0 +1,38 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<TableSelectDialog
+		id="kabariwalaDialog"
+		noDataText="No Solutions Found"
+        confirm=".handleClose"
+		title="Select Solution"
+		items="{
+			path : 'SolutionModel2>/ans'
+            
+		}">
+        <columns>
+			<Column width="12em">
+				<header>
+					<Text text="Name" />
+				</header>
+			</Column>
+			<Column>
+				<header>
+					<Text text="Rating/Designation" />
+				</header>
+			</Column>
+			<Column>
+				<header>
+					<Text text="Contact" />
+				</header>
+			</Column>			
+		</columns>
+        	<ColumnListItem>
+			<cells>
+				<ObjectIdentifier text="{SolutionModel2>name}" />
+				<Text text="{SolutionModel2>rating}{SolutionModel2>Designation}" />
+				<Text text="{SolutionModel2>phone}" />
+			</cells>
+		</ColumnListItem>
+	</TableSelectDialog>
+</core:FragmentDefinition>

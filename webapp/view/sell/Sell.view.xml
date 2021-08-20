@@ -1,0 +1,67 @@
+<mvc:View controllerName="cleanup.controller.sell.Sell"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:f="sap.f"
+    xmlns:card="sap.f.cards"
+    xmlns:grid="sap.ui.layout.cssgrid"
+    xmlns:core="sap.ui.core"
+    xmlns:w="sap.ui.integration.widgets" displayBlock="true" height="100%"
+    xmlns:tnt="sap.tnt">
+    <Page title="Landing page" showHeader="false">
+        <tnt:ToolHeader>
+            <Button icon="sap-icon://home" text="{i18n>appName}" type="Transparent" press="onHomePress">
+                <layoutData>
+                    <OverflowToolbarLayoutData priority="NeverOverflow" />
+                </layoutData>
+            </Button>
+            <ToolbarSpacer/>
+            <Button text="{i18n>howToUse}" press="navToHowToUse"/>
+            <Button text="{i18n>aboutus}" press="navToAboutUs"/>
+        </tnt:ToolHeader>
+        <content>
+        <HBox justifyContent="End" class="sapUiTinyMargin">
+            <Button icon="sap-icon://add" text="Add" press="addNewItem"/>
+        </HBox>
+       	<f:GridList id="gridList3" headerText="Your Orders" items="{ path: 'ownBagItems>/ownBag' }">
+			<f:customLayout>
+				<grid:GridBoxLayout boxWidth="17.5rem" />
+			</f:customLayout>
+
+			<f:GridListItem>
+				<VBox height="100%" justifyContent="SpaceBetween">
+					<layoutData>
+						<FlexItemData growFactor="1" shrinkFactor="0" /><!-- Don't shrink below minimum size. Fill space if available. -->
+					</layoutData>
+
+					<VBox class="sapUiSmallMargin">
+						<HBox justifyContent="SpaceBetween">
+							<core:Icon
+								src="sap-icon://org-chart"
+								size="2.625rem"
+								color="Default"
+								class="sapUiTinyMarginBottom" />
+							<ObjectStatus text="Open" state="Success" />
+						</HBox>
+						<Title text="{ownBagItems>name}" wrapping="true" />
+						<Label text="{ownBagItems>quantity}" wrapping="true" class="sapUiTinyMarginBottom" />
+						<Text text="{ownBagItems>comment}" wrapping="true" />
+					</VBox>
+					<OverflowToolbar design="Solid">
+						<ToolbarSpacer />
+						<Button press="handelEdit" icon="sap-icon://edit" type="Transparent" />
+						<Button  press="handelDeleteItem" icon="sap-icon://delete" type="Transparent" />
+						<Button press="handelInfoShow"  icon="sap-icon://message-information" type="Transparent" />
+					</OverflowToolbar>
+				</VBox>
+			</f:GridListItem>
+		</f:GridList>
+        </content>
+        <footer>
+             <OverflowToolbar>
+                <ToolbarSpacer/>
+                 <Text text="{i18n>globalFooter} ❤️ {i18n>madeBy}"></Text>
+            </OverflowToolbar>
+         </footer>
+        </Page>
+    </mvc:View>

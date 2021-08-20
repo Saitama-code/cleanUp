@@ -1,0 +1,100 @@
+<mvc:View controllerName="cleanup.controller.signUp.SignUp"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:f="sap.f"
+    xmlns:card="sap.f.cards"
+    xmlns:core="sap.ui.core"
+    xmlns:w="sap.ui.integration.widgets" displayBlock="true" height="100%"
+    xmlns:tnt="sap.tnt">
+    <Page title="Landing page" showHeader="false">
+        <tnt:ToolHeader>
+            <Button icon="sap-icon://home" text="{i18n>appName}" type="Transparent" press="onHomePress">
+                <layoutData>
+                    <OverflowToolbarLayoutData priority="NeverOverflow" />
+                </layoutData>
+            </Button>
+            <ToolbarSpacer/>
+            <Button text="{i18n>howToUse}" press="navToHowToUse"/>
+            <Button text="{i18n>aboutus}" press="navToAboutUs"/>
+        </tnt:ToolHeader>
+        <content>
+         <VBox id="EditableProfileBox">
+                    <HBox  alignContent="Center" width="100%">
+                        <HBox>
+                            <Text text="User Name" class="customTextDark sapUiTinyMarginEnd"/>
+                            <Input value="{NSuser>/name}"/>
+                        </HBox>
+                        
+                        <HBox>
+                            <Text text="Password" class="customTextDark sapUiTinyMarginEnd"/>
+                            <Input value="{NSuser>/password}"/>
+                        </HBox>
+
+                       
+                        <HBox>
+                            <Text text=" Re-Enter Password" class="customTextDark sapUiTinyMarginEnd"/>
+                            <Input value="{NSuser>/repassword}"/>
+                        </HBox>
+
+                    </HBox>
+                        
+                    <HBox>
+                         <HBox>
+                            <Text text="Email" class="customTextDark sapUiTinyMarginEnd"/>
+                            <Input value="{NSuser>/email}"/>
+                        </HBox>
+                         <HBox>
+                            <Text text="phone No" class="customTextDark sapUiTinyMarginEnd"/>
+                            <Input value="{NSuser>/phone}"/>
+                        </HBox>
+                         
+                    </HBox>
+
+
+                    <HBox alignContent="Center">
+                         <HBox>
+                                <Text text="First Name" class="customTextDark sapUiTinyMarginEnd"/>
+                                <Input value="{NSuser>/firstName}"/>
+                            </HBox>
+
+                            <HBox alignContent="Center">
+                              <Text text="Last Name" class="customTextDark sapUiTinyMarginEnd"/>
+                               <Input value="{NSuser>/lastName}" valueLiveUpdate="true"/>
+                         </HBox>
+                    </HBox>
+                    <HBox alignContent="Center">
+                        <HBox>
+                            <Text text="State" class="customTextDark sapUiTinyMarginEnd"/>
+                           <ComboBox
+                           id="CBstate"
+                           change="StateChanged"
+			                	items="{
+			                		path: 'location>/states'
+			                	}">
+			                	<core:Item key="{location>state}" text="{location>state}" />
+			                </ComboBox>
+                        </HBox>
+                        <HBox alignContent="Center" >
+                            <Text text="District" class="customTextDark sapUiTinyMarginEnd"/>
+                             <ComboBox
+                           id="CBDistrict"
+                           change="DistrictChanged"
+			                	items="{
+			                		path: 'locationL>/'
+			                	}">
+			                	<core:Item key="{locationL>name}" text="{locationL>name}" />
+			                </ComboBox>
+                        </HBox>
+                    </HBox> 
+                </VBox>
+                <Button press="signUpPressed" text="SignUp" icon="sap-icon://save"/>
+        </content>
+           <footer>
+               <OverflowToolbar>
+               <ToolbarSpacer/>
+                    <Text text="{i18n>globalFooter} ❤️ {i18n>madeBy}"></Text>
+               </OverflowToolbar>
+         </footer>
+        </Page>
+    </mvc:View>

@@ -1,0 +1,28 @@
+{
+    "product": [
+        {
+            "id":1,
+            "ProductPicUrl": "https://5.imimg.com/data5/NO/EE/MY-956419/pvc-pipe-500x500.jpg",
+            "owner": "utkarsh",
+            "name": "PVC PIPES",
+            "comment": "it is in good condition",
+            "quantity": "2KG"
+        },
+        {
+            "id":2,
+            "ProductPicUrl": "https://www.havells.com/HavellsProductImages/HavellsIndia/Content/Consumer/Flexible-Cables/lifeline-hrfr/90m/Red/cover.png",
+            "owner": "naruto",
+            "name": "Havells Wire",
+            "comment": "it is in nice condition",
+            "quantity": "500 meters"
+        },
+        {
+            "id":3,
+            "ProductPicUrl": "https://5.imimg.com/data5/VY/OJ/MY-9625223/paving-stone-500x500.jpg",
+            "owner": "itachi",
+            "name": "Havells Optic Cable",
+            "comment": "Not broken, bought 3 yars ago but not used",
+            "quantity": "500meters"
+        }
+    ]
+}

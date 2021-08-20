@@ -1,0 +1,79 @@
+<mvc:View controllerName="cleanup.controller.solution.Solution"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:f="sap.f"
+    xmlns:card="sap.f.cards"
+    xmlns:core="sap.ui.core"
+    xmlns:w="sap.ui.integration.widgets" displayBlock="true" height="100%"
+    xmlns:tnt="sap.tnt">
+    <App id="solutionApp">
+        <Page title="Landing page" showHeader="false">
+            <tnt:ToolHeader>
+                <Button id="butt" icon="sap-icon://home" text="{i18n>appName}" type="Transparent" press="onHomePress">
+                    <layoutData>
+                        <OverflowToolbarLayoutData priority="NeverOverflow" />
+                    </layoutData>
+                </Button>
+                <ToolbarSpacer/>
+                <Button text="{i18n>howToUse}" press="navToHowToUse"/>
+                <Button text="{i18n>aboutus}" press="navToAboutUs"/>
+            </tnt:ToolHeader>
+            <content>
+             <HBox justifyContent="End">
+                <Button text="Save as SpreadSheet" type="Emphasized" icon="sap-icon://excel-attachment" press="onExport"/>
+                <ToolbarSpacer/>
+                <Button text="Add More Waste" type="Accept" icon="sap-icon://add" press="addMoreWaste"/>
+                </HBox>
+                <Table id="SolutionTable" class="sapUiContentPadding" items="{SolutionModel>/solution}" noDataText="Your dustbin is empty!">
+
+                    <columns>
+                        <Column id="_IDGenColumn1">
+                            <Text id="_IDGenText1" text="{i18n>wasteType}" />
+                        </Column>
+                        <Column id="_IDGenColumn2">
+                            <Text id="_IDGenText2" text="{i18n>qunatity}" />
+                        </Column>
+                        <Column id="_IDGenColumn3">
+                            <Text id="_IDGenText3" text="{i18n>remarks}" />
+                        </Column>
+                        <Column id="dynaminoption">
+                            <Text text="Options"/>
+                        </Column>
+                        <Column id="serviceProviderLabel">
+                            <Text text="Solution Finalised"/>
+                        </Column>
+                    </columns>
+                    <items>
+                        <ColumnListItem id="_IDGenColumnListItem1">
+                            <cells>
+                                <ObjectIdentifier id="_IDGenObjectIdentifier1" title="{SolutionModel>name}" />
+                                <Text id="_IDGenText5" text="{SolutionModel>quantity}"/>
+                                <Text text="{SolutionModel>remark}"/>
+                                <ComboBox id="options" placeholder="Choose Solution provider" selectionChange="optionListChange" items="{path: 'SolutionModel>optionsList'}">
+                                    <core:Item key="{SolutionModel>name}" text="{SolutionModel>name}" />
+                                </ComboBox>
+                                	<FlexBox
+				                    alignItems="Center"
+				                    justifyContent="End">
+                                <Text class="sapUiSmallMarginEnd" text="{SolutionModel>solutionProvider/name}"/>
+                                    <HBox id="_IDGenHBox1_2"   justifyContent="End" >
+                                    <Button id="_IDGenButton2"  class="sapUiSmallMarginBeginEnd" icon="sap-icon://call" press="handelCallTrigger" />
+                                    <Button id="_IDGenButton3"  class="sapUiTinyMarginEnd" icon="sap-icon://email" press="handelMailTrigger" />
+                                </HBox>
+                            </FlexBox>
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+               
+            </content>
+            <footer>
+                <OverflowToolbar>
+                    <ToolbarSpacer/>
+                    <Text text="{i18n>globalFooter} ❤️ {i18n>madeBy}"></Text>
+                </OverflowToolbar>
+            </footer>
+        </Page>
+    </App>
+</mvc:View>

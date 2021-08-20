@@ -1,0 +1,28 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<Popover
+		id="myPopover"
+        showHeader="false"
+		class="sapUiResponsivePadding--header sapUiResponsivePadding--footer"
+		placement="Bottom"
+		initialFocus="logOut">
+        <content>
+		<VBox alignContent="Center">
+        	<Button
+            width="100%"
+					id="Profile"
+					text="{user>/name}"
+					press="goToProfile" />
+				<Button
+                
+            width="100%"
+					id="logOut"
+					text="LogOut"
+					press="handleLogOut" />
+                    </VBox>
+
+            
+        </content>
+	</Popover>
+</core:FragmentDefinition>
