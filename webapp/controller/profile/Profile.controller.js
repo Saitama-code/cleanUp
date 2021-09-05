@@ -51,7 +51,9 @@ sap.ui.define([
                         }
                         comboboxDist.push(mod);
                     }
-                    this.getView().setModel(new JSONModel(comboboxDist), "locationL");
+                    //var mod=new JSONModel(comboboxDist);
+                    this.getView().setModel(new JSONModel({"dist":comboboxDist}), "locationL");
+                    console.log(comboboxDist,new JSONModel({"dist":comboboxDist}),this.getView().getModel("locationL"))
                 }
             }
         },
@@ -145,17 +147,35 @@ sap.ui.define([
             profilebox.setProperty("visible", true);
 
             MessageToast.show("Updated");
+
+            var pbutton = this.byId("EditProfileBtn");
+             pbutton.setProperty("visible", true);
+        },
+        handelCancelChanges: function () {
+           this.getView().setModel(this.getOwnerComponent().getModel("user"), "user");
+            this.getView().setModel(this.getView().getModel("user"), "NSuser");
+            var tt = this.byId("EditableProfileBox");
+            tt.setProperty("visible", false);
+            var profilebox = this.byId("NonEditableProfileBox");
+            profilebox.setProperty("visible", true);
+
+            MessageToast.show("Cancelled");
+             var pbutton = this.byId("EditProfileBtn");
+             pbutton.setProperty("visible", true);
         },
         handelEditChanges: function () {
             this.flag=!this.flag;
+            var pbutton = this.byId("EditProfileBtn");
             var tt = this.byId("EditableProfileBox");
             var profilebox = this.byId("NonEditableProfileBox");
             if(this.flag){
                 tt.setProperty("visible", true);
                 profilebox.setProperty("visible", false);
+                pbutton.setProperty("visible", false);
             }else{
                 tt.setProperty("visible", false);
                 profilebox.setProperty("visible", true);
+                pbutton.setProperty("visible", true);
             }
         }
 

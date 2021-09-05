@@ -3,7 +3,7 @@
 
 .myCustomText {
   font-weight: bold;
-  font-size: 50px !important;
+  font-size: 5rem !important;
   align-content: center;
   padding: 1rem;
 }
@@ -24,4 +24,27 @@
     font-weight: bold;
   font-size: 20px !important;
   padding: 1rem;
+}
+
+/*
+HARI
+*/
+
+.sapMLabel {
+    text-align: end!important;
+    float: none;
+    position: relative;
+    width: 250px;
+}
+.sapMLabelCombo {
+    text-align: end!important;
+    float: none;
+    position: relative;
+    width: 180px;
+}
+.sapMButton {
+    text-align: end!important;
+    float: none;
+    position: relative;
+    width: 120px;
 }

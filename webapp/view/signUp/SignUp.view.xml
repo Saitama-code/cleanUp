@@ -5,9 +5,10 @@
     xmlns:f="sap.f"
     xmlns:card="sap.f.cards"
     xmlns:core="sap.ui.core"
+    xmlns:grid="sap.ui.layout.cssgrid"
     xmlns:w="sap.ui.integration.widgets" displayBlock="true" height="100%"
     xmlns:tnt="sap.tnt">
-    <Page title="Landing page" showHeader="false">
+    <Page title="Sign up Page" showHeader="false">
         <tnt:ToolHeader>
             <Button icon="sap-icon://home" text="{i18n>appName}" type="Transparent" press="onHomePress">
                 <layoutData>
@@ -19,76 +20,119 @@
             <Button text="{i18n>aboutus}" press="navToAboutUs"/>
         </tnt:ToolHeader>
         <content>
-         <VBox id="EditableProfileBox">
-                    <HBox  alignContent="Center" width="100%">
+
+              <grid:CSSGrid
+			        id="grid2"
+			        gridTemplateColumns="1fr 1fr">
+        	<FlexBox
+                width="100%"
+				alignItems="Center"
+				justifyContent="Center" class="">
+                    <VBox  alignContent="Center">
                         <HBox>
-                            <Text text="User Name" class="customTextDark sapUiTinyMarginEnd"/>
+                            <Text text="User Name*" wdith="100px" class="customTextDark sapUiTinyMarginEnd sapMLabel"/>
                             <Input value="{NSuser>/name}"/>
                         </HBox>
                         
                         <HBox>
-                            <Text text="Password" class="customTextDark sapUiTinyMarginEnd"/>
-                            <Input value="{NSuser>/password}"/>
+                            <Text text="Password*" wdith="100px" class="customTextDark sapUiTinyMarginEnd sapMLabel"/>
+                            <Input value="{NSuser>/password}" type="password"/>
                         </HBox>
 
                        
                         <HBox>
-                            <Text text=" Re-Enter Password" class="customTextDark sapUiTinyMarginEnd"/>
-                            <Input value="{NSuser>/repassword}"/>
-                        </HBox>
-
-                    </HBox>
-                        
-                    <HBox>
-                         <HBox>
-                            <Text text="Email" class="customTextDark sapUiTinyMarginEnd"/>
-                            <Input value="{NSuser>/email}"/>
+                            <Text text=" Re-Enter Password*" wdith="100px" class="customTextDark sapUiTinyMarginEnd sapMLabel"/>
+                            <Input value="{NSuser>/repassword}"  type="password"/>
                         </HBox>
                          <HBox>
-                            <Text text="phone No" class="customTextDark sapUiTinyMarginEnd"/>
-                            <Input value="{NSuser>/phone}"/>
+                            <Text text="Email" wdith="100px" class="customTextDark sapUiTinyMarginEnd sapMLabel"/>
+                            <Input value="{NSuser>/email}" type="email"/>
+                        </HBox>
+                         <HBox>
+                            <Text text="phone No" wdith="100px" class="customTextDark sapUiTinyMarginEnd sapMLabel"/>
+                            <Input value="{NSuser>/phone}" type="number"/>
                         </HBox>
                          
-                    </HBox>
-
-
-                    <HBox alignContent="Center">
                          <HBox>
-                                <Text text="First Name" class="customTextDark sapUiTinyMarginEnd"/>
+                                <Text text="First Name*" wdith="100px" class="customTextDark sapUiTinyMarginEnd sapMLabel"/>
                                 <Input value="{NSuser>/firstName}"/>
                             </HBox>
 
                             <HBox alignContent="Center">
-                              <Text text="Last Name" class="customTextDark sapUiTinyMarginEnd"/>
+                              <Text text="Last Name" wdith="100px" class="customTextDark sapUiTinyMarginEnd sapMLabel"/>
                                <Input value="{NSuser>/lastName}" valueLiveUpdate="true"/>
                          </HBox>
+                     
+
+                    	
+                    </VBox> 
+                </FlexBox>
+                <VBox>
+               <FlexBox
+                width="100%"
+				alignItems="Center"
+				justifyContent="Center" class="">
+                    <Label text="Type" labelFor="types" class="customTextDark sapUiLargeMarginEnd" />
+				    <RadioButtonGroup id="types" select="typeChanged" valueState="Success">
+					    <RadioButton text="Waste Generator" selected="true" />
+					    <RadioButton text="Kabariwala" />
+					    <RadioButton text="Governing Body" />
+					    <RadioButton text="Plant" />
+				    </RadioButtonGroup>
+               </FlexBox>
+                 <FlexBox
+                 id="boxForExtra"
+                width="100%"
+				alignItems="Center"
+                 visible="false"
+				justifyContent="Center" class="">
+                    <HBox id="governingBodiesDesigantion" visible="false">
+                        <Label text="Designation" labelFor="GDesig" class="customTextDark sapUiLargeMarginEnd" />
+                        <Input value="{NSuser>/gDesig}" valueLiveUpdate="true" />
                     </HBox>
-                    <HBox alignContent="Center">
-                        <HBox>
-                            <Text text="State" class="customTextDark sapUiTinyMarginEnd"/>
-                           <ComboBox
-                           id="CBstate"
-                           change="StateChanged"
+                    	<Button id="addWasteBtn"
+	                		text="Choose what waste you Accept"
+                            icon="sap-icon://add"
+	                		press="onAddWaste"
+	                		class="sapUiSmallMarginBottom"
+                            ariaHasPopup="Dialog"/>
+                  </FlexBox>
+                </VBox>
+
+                </grid:CSSGrid>
+                <grid:CSSGrid
+			        id="grid1"
+			        gridTemplateColumns="1fr 1fr"
+			        gridGap="0px">
+                            <HBox>
+                                <Text text="State*" wdith="100px" class="customTextDark sapUiTinyMarginEnd sapMLabel"/>
+                                <ComboBox
+                                id="CBstate"
+                                change="StateChanged"
 			                	items="{
 			                		path: 'location>/states'
 			                	}">
 			                	<core:Item key="{location>state}" text="{location>state}" />
-			                </ComboBox>
-                        </HBox>
-                        <HBox alignContent="Center" >
-                            <Text text="District" class="customTextDark sapUiTinyMarginEnd"/>
-                             <ComboBox
-                           id="CBDistrict"
-                           change="DistrictChanged"
+			                    </ComboBox>
+                            </HBox>
+                            <HBox alignContent="Center" >
+                                <Text text="District*" wdith="100px" class="customTextDark sapUiTinyMarginEnd sapMLabel"/>
+                                <ComboBox
+                                onTap="DistrictChanged"
+                                id="CBDistrict"
+                                change="DistrictChanged"
 			                	items="{
 			                		path: 'locationL>/'
 			                	}">
 			                	<core:Item key="{locationL>name}" text="{locationL>name}" />
-			                </ComboBox>
-                        </HBox>
-                    </HBox> 
-                </VBox>
-                <Button press="signUpPressed" text="SignUp" icon="sap-icon://save"/>
+			                    </ComboBox>
+                            </HBox> 
+</grid:CSSGrid>
+                            	<FlexBox
+                                alignItems="Center"
+				                justifyContent="Center">
+                                <Button  press="signUpPressed" text="SignUp" type="Accept" icon="sap-icon://save" class="sapUiTinyMargin"/>
+                                </FlexBox>
         </content>
            <footer>
                <OverflowToolbar>

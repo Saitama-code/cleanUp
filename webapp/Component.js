@@ -71,7 +71,13 @@ sap.ui.define([
                     console.log(marketItems)
                     this.setModel(marketItems, "marketItem");
                 }, this);
-
+            //master data of solution providers
+            var oData1 = new JSONModel("model/masterData.json", false);
+                oData1.attachRequestCompleted(
+                    function () {
+                        this.setModel(oData1, "masterData");
+                        console.log(this.getModel("masterData"))
+                    }, this);
 
         }
     });

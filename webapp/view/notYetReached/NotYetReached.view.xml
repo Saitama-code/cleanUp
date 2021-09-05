@@ -19,7 +19,14 @@
             <Button text="{i18n>aboutus}" press="navToAboutUs"/>
         </tnt:ToolHeader>
         <content>
-
+                <VBox fitContainer="true" justifyContent="Center" alignItems="Center" alignContent="Center">
+                        <items>
+                        <Title text="WE are not yet there in your Location" class="myCustomText2"/>
+                        <Title text="But hang on! we will be there soon!!" class="myCustomText2"/>
+                        <Title text="Try the third R" class="myCustomText2"/>
+                        <Title text="'Reduce'" class="myCustomText"/>
+                        </items>
+                        </VBox>
             </content>
             <footer>
                 <OverflowToolbar>

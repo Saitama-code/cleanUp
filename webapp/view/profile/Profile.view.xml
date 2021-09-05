@@ -4,7 +4,6 @@
     xmlns:mvc="sap.ui.core.mvc"
     xmlns:f="sap.f"
     xmlns:card="sap.f.cards"
-    
     xmlns:core="sap.ui.core"
     xmlns:w="sap.ui.integration.widgets" displayBlock="true" height="100%"
     xmlns:tnt="sap.tnt">
@@ -18,13 +17,12 @@
             <ToolbarSpacer/>
             <Button text="{i18n>howToUse}" press="navToHowToUse"/>
             <Button text="{i18n>aboutus}" press="navToAboutUs"/>
-              <Button icon="sap-icon://customer" ariaHasPopup="Menu" press="onPressProfile"/>
+            <Button icon="sap-icon://customer" ariaHasPopup="Menu" press="onPressProfile"/>
         </tnt:ToolHeader>
         <content>
          <Bar>
-                <contentLeft>
-                    
-                    <Button type="Attention" text="Edit" class="sapUiTinyMarginEnd" icon="sap-icon://edit" press="handelEditChanges"/>
+                <contentLeft>                    
+                    <Button type="Attention" id="EditProfileBtn" text="Edit Profile" class="sapUiTinyMarginEnd" icon="sap-icon://edit" press="handelEditChanges"/>
                 </contentLeft>
             </Bar>
             <HBox alignContent="Center" wrap="Wrap">
@@ -41,73 +39,94 @@
 				</VBox>
                 </HBox>
                 <VBox id="NonEditableProfileBox">
-                    <HBox  alignContent="Center" width="100%">
+                    
                         <HBox>
-                            <Text text="First Name" class="customTextDark sapUiTinyMarginEnd"/>
-                            <Text text="{user>/firstName}" class="customTextDark sapUiTinyMarginEnd"/>
+                            <Text text="First Name :" wdith="100px" class="customTextDark sapUiTinyMarginEnd sapMLabel"/>
+                            <Text text="{user>/firstName}" wdith="100px" class="customTextDark sapUiTinyMarginEnd"/>
                         </HBox>
                         <HBox alignContent="Center">
-                            <Text text="Last Name" class="customTextDark sapUiTinyMarginEnd"/>
-                            <Text text="{user>/lastName}" class="customTextDark sapUiTinyMarginEnd"/>
+                            <Text text="Last Name :" wdith="100px" class="customTextDark sapUiTinyMarginEnd sapMLabel"/>
+                            <Text text="{user>/lastName}" wdith="100px" class="customTextDark sapUiTinyMarginEnd"/>
                         </HBox>
-                    </HBox>
-                    <HBox alignContent="Center">
+                    
+                
                         <HBox>
-                            <Text text="State" class="customTextDark sapUiTinyMarginEnd"/>
-                           <Text text="{user>/state}" class="customTextDark sapUiTinyMarginEnd"/>
+                            <Text text="State          :" wdith="100px" class="customTextDark sapUiTinyMarginEnd sapMLabel"/>
+                           <Text text="{user>/state}" wdith="100px" class="customTextDark sapUiTinyMarginEnd"/>
                         </HBox>
                         <HBox alignContent="Center" >
-                            <Text text="District" class="customTextDark sapUiTinyMarginEnd"/>
-                             <Text text="{user>/district}" class="customTextDark sapUiTinyMarginEnd"/>
+                            <Text text="District   :" wdith="100px" class="customTextDark sapUiTinyMarginEnd sapMLabel"/>
+                             <Text text="{user>/district}" wdith="100px" class="customTextDark sapUiTinyMarginEnd"/>
                         </HBox>
-                    </HBox>
+
+                        <HBox>
+                            <Text text="Email      :" wdith="100px" class="customTextDark sapUiTinyMarginEnd sapMLabel"/>
+                           <Text text="{user>/email}" wdith="100px" class="customTextDark sapUiTinyMarginEnd"/>
+                        </HBox>
+                        <HBox alignContent="Center" >
+                            <Text text="Phone      :" wdith="100px" class="customTextDark sapUiTinyMarginEnd sapMLabel"/>
+                             <Text text="{user>/phone}" wdith="100px" class="customTextDark sapUiTinyMarginEnd"/>
+                        </HBox>
+                 
                 </VBox>
 
 
-
                     <VBox id="EditableProfileBox">
-                    <HBox  alignContent="Center" width="100%">
+                
                         <HBox>
-                            <Text text="First Name" class="customTextDark sapUiTinyMarginEnd"/>
+                            <Text text="First Name :" class="customTextDark sapUiTinyMarginEnd sapMLabel"/>
                             <Input value="{NSuser>/firstName}"/>
                         </HBox>
-                        <HBox alignContent="Center">
-                            <Text text="Last Name" class="customTextDark sapUiTinyMarginEnd"/>
+                        <HBox >
+                            <Text text="Last Name :" class="customTextDark sapUiTinyMarginEnd sapMLabel"/>
                             <Input value="{NSuser>/lastName}" valueLiveUpdate="true"/>
                         </HBox>
-                    </HBox>
-                    <HBox alignContent="Center">
+                                      
                         <HBox>
-                            <Text text="State" class="customTextDark sapUiTinyMarginEnd"/>
-                           <ComboBox
-                           id="CBstate"
-                           change="StateChanged"
+                            <Text text="State       :" class="customTextDark sapUiTinyMarginEnd sapMLabel"/>
+                           <ComboBox 
+                           id="CBstate" autocomplete = "off"
+                           change="StateChanged" class="sapUiTinyMarginEnd sapMLabelCombo"
 			                	items="{
 			                		path: 'location>/states'
 			                	}">
 			                	<core:Item key="{location>state}" text="{location>state}" />
 			                </ComboBox>
                         </HBox>
-                        <HBox alignContent="Center" >
-                            <Text text="District" class="customTextDark sapUiTinyMarginEnd"/>
-                             <ComboBox
-                           id="CBDistrict"
+                        <HBox>
+                            <Text text="District :" class="customTextDark sapUiTinyMarginEnd sapMLabel"/>
+                             <ComboBox class=" sapUiTinyMarginEnd sapMLabelCombo"
+                           id="CBDistrict" autocomplete = "off"
                            change="DistrictChanged"
 			                	items="{
-			                		path: 'locationL>/'
+			                		path: 'locationL>/dist'
 			                	}">
-			                	<core:Item key="{locationL>name}" text="{locationL>name}" />
+			                	<core:Item key="{locationL>name}" text="{locationL>name}"/>
 			                </ComboBox>
+                        </HBox>                   
+                   
+                        <HBox>
+                            <Text text="Email :" class="customTextDark sapUiTinyMarginEnd sapMLabel"/>
+                            <Input value="{NSuser>/email}"/>
                         </HBox>
-                    </HBox>
+                        <HBox >
+                            <Text text="Phone :" class="customTextDark sapUiTinyMarginEnd sapMLabel"/>
+                            <Input value="{NSuser>/phone}" valueLiveUpdate="true"/>
+                        </HBox>    
+                        <Bar>
+                            <contentRight>
+                                <Button type="Emphasized" text="Update" class="sapUiTinyMarginEnd sapMButton" icon="sap-icon://save" press="handelSaveChanges"/>
+                            </contentRight>
+
+                            <contentRight>
+                                <Button type="Emphasized" text="Cancel" class="sapUiTinyMarginEnd sapMButton" icon="sap-icon://cancel" press="handelCancelChanges"/>
+                            </contentRight>
+                        </Bar>                
                 </VBox>
+            
             </HBox>
 
-            <Bar>
-                <contentRight>
-                    <Button type="Emphasized" text="Update" class="sapUiTinyMarginEnd" icon="sap-icon://save" press="handelSaveChanges"/>
-                </contentRight>
-            </Bar>
+            
             </content>
             <footer>
                 <OverflowToolbar>

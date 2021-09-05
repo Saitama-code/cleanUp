@@ -23,25 +23,9 @@ sap.ui.define([
                 this.s = "0";
 
 
-                var oData1 = new JSONModel("model/masterData.json", false);
-                oData1.attachRequestCompleted(
-                    function () {
-                        //console.log(this.getView())
-                        this.getView().setModel(oData1, "masterData");
-                        //   console.log(this.getView().getModel("masterData").getData());
-                    }, this);
-                //new JSONModel("model/masterData.json",false)
-                //console.log("odata1   ", oData1);
-
-
-                // console.log(this.getView().getModel("masterData").getData());
-
-
-
-
-                //   this.dustBinModel = (this.getOwnerComponent().getModel("dustbinItems"));
-                // console.log(this.dustBinModel);
-
+                this.getView().setModel(this.getOwnerComponent().getModel("masterData"), "masterData");
+                
+                
                 //to retain data in previous screen
                 sessionStorage.setItem("recycleClean", "0");
 
@@ -57,11 +41,11 @@ sap.ui.define([
 
 
                 //  oData1.attachRequestCompleted(function () {this.mainSolution()})
-                oData1.attachRequestCompleted(
-                    function () {
+       //         oData1.attachRequestCompleted(
+          //          function () {
                         //console.log(this.getView())
                         this.mainSolution();
-                    }, this);
+        //            }, this);
 
             },
             inArray: function (a, b) {

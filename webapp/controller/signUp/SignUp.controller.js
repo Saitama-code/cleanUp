@@ -1,8 +1,9 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
     'sap/m/MessageToast',
-    "sap/ui/model/json/JSONModel"
-], function (Controller, MessageToast, JSONModel) {
+    "sap/ui/model/json/JSONModel",
+    "sap/ui/core/Fragment"
+], function (Controller, MessageToast, JSONModel, Fragment) {
     "use strict";
 
     return Controller.extend("cleanup.controller.signUp.SignUp", {
@@ -21,27 +22,48 @@ sap.ui.define([
                     this.getView().setModel(locationData, "location");
                 }, this);
             this.getView().setModel(new JSONModel({
-                "name":"",
-                "firstName":"",
-                "lastName":"",
-                "phone":"",
-                "state":"",
-                "district":"",
-                "email":""
-            }),"NSuser");
+                "name": "",
+                "firstName": "",
+                "lastName": "",
+                "phone": "",
+                "state": "",
+                "district": "",
+                "email": "",
+                "type": "WG",
+                "gDesig": "",
+                "accept": []
+            }), "NSuser");
+            var oData3 = new JSONModel("model/typeOfWaste.json");
+            oData3.attachRequestCompleted(
+                function () {
+                    this.getView().setModel(oData3);
+                    console.log(oData3.getData())
+                }, this);
             let route = this.getOwnerComponent().getRouter().getRoute("home");
             route.attachPatternMatched(this.onRoutePatternMatched, this);
+            
+                this.getView().setModel(new JSONModel({}), "locationL");
         },
-        onRoutePatternMatched:function(){
-             this.getView().setModel(new JSONModel({
-                "name":"",
-                "firstName":"",
-                "lastName":"",
-                "phone":"",
-                "state":"",
-                "district":"",
-                "email":""
-            }),"NSuser");
+        onRoutePatternMatched: function () {
+            this.getView().setModel(new JSONModel({
+                "name": "",
+                "firstName": "",
+                "lastName": "",
+                "phone": "",
+                "state": "",
+                "district": "",
+                "email": "",
+                "type": "WG",
+                "gDesig": "",
+                "accept": []
+            }), "NSuser");
+            var oData3 = new JSONModel("model/typeOfWaste.json");
+            oData3.attachRequestCompleted(
+                function () {
+                    this.getView().setModel(oData3);
+                    console.log(oData3.getData())
+                }, this);
+                this.getView().setModel(new JSONModel({}), "locationL");
         },
         _navTo: function (sRoute) {
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
@@ -98,20 +120,182 @@ sap.ui.define([
                     return;
                 }
             }
-            let attributes = Object.keys(x)
-            for(var i=0;i<attributes.length;i++){
-                if(attributes[i]==""){
-                     MessageToast.show("Please Fill in all details")
-                    return;
-                }
+            if (x.firstName == "") {
+                MessageToast.show("FirstName required");
+                return;
             }
+            if (x.district == "") {
+                MessageToast.show("Please Choose Location for best use");
+                return;
+            }
+
+
+
+            //now the form is good
+
+            if (x.type == "WG") {
+
+
+
+                /*
+                "name": "utkarsh",
+                "password": "io",
+                "state": "Jharkhand",
+                "district": "Gumla",
+                "firstName": "Utkarsh",
+                "lastName": ".",
+                "phone": "+911000000001",
+                "email": "utkarsh@sap.com"
+                NORMAL USER
+                */
+                loginData.user.push(x);
+                this.getOwnerComponent().setModel(new JSONModel(loginData), "loginData");
+                //var nm = this.getOwnerComponent().getModel("loginData").getData();
+                //console.log(nm);
+            }
+            else if (x.type == "govContact") {
+                var data = x;
+                data.name = x.name;
+                data.rating = "";
+                data.Designation=x.gDesig;
+                //creating normal user
+                loginData.user.push(data);
+                this.getOwnerComponent().setModel(new JSONModel(loginData), "loginData");
+
+                //including in masterData
+                this.dbUpdate(x,data,2)
+            } else if (x.type == "plants") {
+                var data = x;
+                data.name = x.name;
+                data.rating = 5;
+                this.dbUpdate(x,data,3)
+            } else {
+                var data = x;
+                data.name = x.name;
+                data.rating = 5;
+                this.dbUpdate(x,data,4)
+            }
+
+
+            this._navTo("home");
+        },
+        typeChanged: function (oEvent) {
+            var type = oEvent.oSource.getSelectedButton().getText()
+            var dbType =
+                console.log(type);
+            if (type == "Waste Generator") {
+                dbType = "WG";
+                this.byId("boxForExtra").setVisible(false)
+            }
+            else if (type == "Governing Body") {
+                dbType = "govContact";
+                this.byId("boxForExtra").setVisible(true)
+                this.byId("governingBodiesDesigantion").setVisible(true)
+                this.byId("addWasteBtn").setVisible(false)
+            } else if (type == "Plant") {
+                dbType = "plants";
+                this.byId("boxForExtra").setVisible(true)
+                this.byId("governingBodiesDesigantion").setVisible(false)
+                this.byId("addWasteBtn").setVisible(true)
+            } else if (type == "Kabariwala") {
+                dbType = "kabariwalas";
+                this.byId("boxForExtra").setVisible(true)
+                this.byId("governingBodiesDesigantion").setVisible(false)
+                this.byId("addWasteBtn").setVisible(true)
+            }
+            this.getView().getModel("NSuser").oData.type = dbType;
+        },
+        onAddWaste: function (oEvent) {
+
+            var oButton = oEvent.getSource(),
+                oView = this.getView();
+
+            if (!this._pDialog) {
+                this._pDialog = Fragment.load({
+                    id: oView.getId(),
+                    name: "cleanup.view.fragments.addAccept",
+                    controller: this
+                }).then(function (oDialog) {
+                    oDialog.setModel(oView.getModel());
+                    return oDialog;
+                });
+            }
+
+            this._pDialog.then(function (oDialog) {
+                oDialog.setMultiSelect(true);
+
+                oDialog.open();
+            }.bind(this));
+
+        },
+        onDialogClose: function (oEvent) {
+            var aContexts = oEvent.getParameter("selectedContexts");
+            if (aContexts && aContexts.length) {
+                var it = aContexts.map(function (oContext) { return oContext.getObject().name.toLowerCase(); });
+
+                this.getView().getModel("NSuser").oData.accept = it;
+                console.log(this.getView().getModel("NSuser").oData)
+            } else {
+                MessageToast.show("No new item was selected.");
+            }
+            oEvent.getSource().getBinding("items").filter([]);
+        },
+        dbUpdate:function(x,data,type){
             
-            loginData.user.push(x);
-           this.getOwnerComponent().setModel(new JSONModel(loginData),"loginData");
-           var nm=this.getOwnerComponent().getModel("loginData").getData();
-           console.log(nm);
-           this._navTo("home");
+                var stateC=x.state;
+                var districtC=x.district;
+                var stateInd=-1;
+                var stateArray= this.getOwnerComponent().getModel("masterData").oData.states
+                for(var i=0;i<stateArray.length;i++){
+                    if(stateArray[i].state==stateC){
+                        stateInd=i;
+                        break;
+                    }
+                }
+                if(stateInd==-1){
+                    //new state has to be formed in db
+                    stateArray.push({
+                        "state":stateC,
+                        "district":[]
+                    })
+                    stateInd=stateArray.length-1;
+                }
+
+                var ourState = stateArray[stateInd];
+                var districtInd=-1;
+                for(var i=0;i<ourState.district.length;i++){
+                    if(ourState.district[i].name==districtC){
+                        districtInd=i;
+                        break;
+                    }
+                }
+                if(districtInd==-1){
+                    //new district has to be formed
+                    ourState.district.push({
+                        "name":districtC,
+                        "kabariwalas":[],
+                        "plants":[],
+                        "govContact":[]
+                    });
+                    districtInd=ourState.district.length-1;
+                }   
+            if(type==1){
+                //WG
+                  stateArray[stateInd].district[districtInd].WG.push(data);
+            }else if(type==2){
+                //govContact
+                stateArray[stateInd].district[districtInd].govContact.push(data);
+            }else if(type==3){
+                //plants
+                 stateArray[stateInd].district[districtInd].plants.push(data);
+            }else if(type==4){
+                //kabariwalas
+                 stateArray[stateInd].district[districtInd].kabariwalas.push(data);
+            }
+            this.getOwnerComponent().getModel("masterData").states=stateArray;
+            console.log(this.getOwnerComponent().getModel("masterData").getData())
         }
+        
 		/**
 		 * Similar to onAfterRendering, but this hook is invoked before the controller's View is re-rendered
 		 * (NOT before the first rendering! onInit() is used for that one!).

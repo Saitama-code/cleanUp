@@ -1,0 +1,17 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<SelectDialog
+		id="addAcceptWasteDialog"
+		noDataText="Nothing to Show"
+		title="Select the Waste that you accept"
+		confirm="onDialogClose"
+		cancel="onDialogClose"
+		items="{
+			path: '/types'
+		}">
+		<StandardListItem
+			title="{name}"
+			type="Active" />
+	</SelectDialog>
+</core:FragmentDefinition>
