@@ -20,6 +20,9 @@
             <Button text="{i18n>aboutus}" press="navToAboutUs"/>
         </tnt:ToolHeader>
         <content>
+         <HBox justifyContent="Start" class="sapUiTinyMargin">
+            <Button icon="sap-icon://nav-back" style="transparent" text="Back" press="navToReuse"/>
+        </HBox>
         <HBox justifyContent="End" class="sapUiTinyMargin">
             <Button icon="sap-icon://add" text="Add" press="addNewItem"/>
         </HBox>
@@ -51,7 +54,6 @@
 						<ToolbarSpacer />
 						<Button press="handelEdit" icon="sap-icon://edit" type="Transparent" />
 						<Button  press="handelDeleteItem" icon="sap-icon://delete" type="Transparent" />
-						<Button press="handelInfoShow"  icon="sap-icon://message-information" type="Transparent" />
 					</OverflowToolbar>
 				</VBox>
 			</f:GridListItem>

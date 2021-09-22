@@ -47,6 +47,9 @@ sap.ui.define([
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             oRouter.navTo(sRoute);
         },
+        navToReuse: function(){
+            this._navTo("Reuse")
+        },
         navToAboutUs: function () {
             this._navTo("AboutUs");
         },
@@ -124,6 +127,56 @@ sap.ui.define([
             this.getOwnerComponent().setModel(new JSONModel({"product":marketItemNew}),"marketItem");
             this.onRoutePatternMatched("");
         },
+        handelEdit:function(oEvent){
+            var ind = oEvent.oSource.oParent.getBindingContext('ownBagItems').getPath().split("/")[2]
+            ind=parseInt(ind);
+            var oView=this.getView();
+            var oldBagItem=this.getView().getModel("ownBagItems").getData().ownBag[ind];
+            this.getView().setModel(new JSONModel(oldBagItem), "currObject")
+            //this.getView()
+            if (!this._eDialog) {
+                console.log("edia");
+                this._eDialog = Fragment.load({
+                    
+                    id: oView.getId(),
+                    name: "cleanup.view.fragments.EditMarketItem",
+                    controller: this
+                }).then(function (eDialog) {
+                    oView.addDependent(eDialog);
+                    return eDialog;
+                });
+            }
+
+            this._eDialog.then(function (eDialog) {
+                // this._configDialog(oButton, oDialog);
+                eDialog.open();
+            }.bind(this));
+        },
+        handelPostEditedObject:function(oEvent){
+            var product = this.getView().getModel("currObject").getData();
+            var i=-1;
+            for(var j=0;j<this.marketData.length;j++){
+                if(this.marketData[j].id==product.id){
+                    //found the object
+                    i=j;
+                    break;
+                }
+            }
+            this.marketData[i]=product;
+            this.getOwnerComponent().setModel(new JSONModel({
+                "product": this.marketData
+            }), "marketItem")
+            this._eDialog.then(function (eDialog) {
+                eDialog.close();
+            }.bind(this));
+            this.onRoutePatternMatched("");
+        },
+        handelCloseEditObject:function(){
+            this._eDialog.then(function (eDialog) {
+                eDialog.close();
+            }.bind(this));
+            this.onRoutePatternMatched("");
+        }
 		/**
 		 * Similar to onAfterRendering, but this hook is invoked before the controller's View is re-rendered
 		 * (NOT before the first rendering! onInit() is used for that one!).
@@ -138,10 +191,10 @@ sap.ui.define([
 		 * This hook is the same one that SAPUI5 controls get after being rendered.
 		 * @memberOf sapui5.training.ui.view.Launchpad
 		 */
-        onAfterRendering: function () {
+       /* onAfterRendering: function () {
 
         },
-
+*/
 		/**
 		 * Called when the Controller is destroyed. Use this one to free resources and finalize activities.
 		 * @memberOf sapui5.training.ui.view.Launchpad

@@ -30,6 +30,9 @@ sap.ui.define([
         navToMarket: function () {
             this._navTo("Market");
         },
+        navToReuse:function(){
+            this._navTo("Reuse");
+        },
         onHomePress: function () {
             this._navTo("LaunchPad")
         },
@@ -73,7 +76,7 @@ sap.ui.define([
 
 
             console.log(marketItems.product[ind].owner)
-            MessageToast.show((bSelected ? "Selected" : "Unselected") + " item with ID " + oEvent.getParameter("listItem").getId());
+            //MessageToast.show((bSelected ? "Selected" : "Unselected") + " item with ID " + oEvent.getParameter("listItem").getId());
         },
         handelCall:function(oEvent){
             var owner=this.getView().getModel("currObject").getData().owner;

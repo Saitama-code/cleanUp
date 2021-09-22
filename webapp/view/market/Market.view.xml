@@ -20,6 +20,9 @@
             <Button text="{i18n>aboutus}" press="navToAboutUs"/>
         </tnt:ToolHeader>
         <content>
+         <HBox justifyContent="Start" class="sapUiTinyMargin">
+            <Button icon="sap-icon://nav-back" style="transparent" text="Back" press="navToReuse"/>
+        </HBox>
 
 	<f:GridList
 		id="gridList"
@@ -40,8 +43,8 @@
 			highlight="{quantity}"
 			type="{type}">
 			<VBox height="100%">
-				<Image src="{marketItem>ProductPicUrl}" width="100%" visible="{= ${onlyImage} ? true : false }" class="imageDisplayBlock" />
-				<HBox height="100%" class="sapUiSmallMargin" alignItems="Center" visible="{= ${onlyImage} ? false : true }">
+			
+				<HBox height="100%" class="sapUiSmallMargin" alignItems="Center">
 					<Image src="{marketItem>ProductPicUrl}" width="3rem" class="sapUiSmallMarginEnd" />
                     	<grid:CSSGrid
 			id="grid1"
@@ -49,14 +52,9 @@
 			gridGap="1rem">
 					<VBox>
 						<Title text="{marketItem>name}" wrapping="true" />
-						<Label text="{marketItem>quantity}" wrapping="true" />
+						<Label text="{marketItem>quantity}" wrapping="false" />
 					</VBox>
-                    <VBox>
-                        <Title text="Description" wrapping="true"/>
-                        <Label text="{marketItem>comment}" wrapping="true"/>
-                    </VBox>
-
-		</grid:CSSGrid>
+                    </grid:CSSGrid>
                     
 				</HBox>
 			</VBox>

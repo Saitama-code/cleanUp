@@ -19,7 +19,14 @@
             <Button text="{i18n>aboutus}" press="navToAboutUs"/>
         </tnt:ToolHeader>
         <content>
-
+<Carousel class="sapUiContentPadding">
+		<Image src="img/globe.png" alt="dummy"/>
+		<Image src="img/reuse.jpg" alt="dummy"/>
+		<Image src="img/scooter.gif" alt="dummy"/>
+		<Image src="img/sharingan.gif" alt="dummy"/>
+		<Image src="img/globe.png" alt="dummy"/>
+		<Image src="img/globe.png" alt="dummy"/>
+	</Carousel>
             </content>
             <footer>
                 <OverflowToolbar>

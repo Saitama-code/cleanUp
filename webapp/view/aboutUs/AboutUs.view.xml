@@ -51,8 +51,8 @@
                         <HBox alignItems="Center">
                             <VBox alignItems="Center" class="sapUiSmallMargin">
                                 <items>
-                                    <Avatar initials="es" displaySize="XL" showBorder="true" press="onPress"/>
-                                    <Text text="Person 1" class="sapUiSmallMarginTop"/>
+                                    <Avatar initials="AK" displaySize="XL" showBorder="true" press="onPress"/>
+                                    <Text text="person 1" class="sapUiSmallMarginTop"/>
                                 </items>
                             </VBox>
                             <VBox alignItems="Center" class="sapUiSmallMargin">
