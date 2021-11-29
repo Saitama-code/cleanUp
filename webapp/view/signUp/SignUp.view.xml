@@ -36,13 +36,13 @@
                         
                         <HBox>
                             <Text text="Password*" wdith="100px" class="customTextDark sapUiTinyMarginEnd sapMLabel"/>
-                            <Input value="{NSuser>/password}" type="password"/>
+                            <Input value="{NSuser>/password}" type="Password"/>
                         </HBox>
 
                        
                         <HBox>
                             <Text text=" Re-Enter Password*" wdith="100px" class="customTextDark sapUiTinyMarginEnd sapMLabel"/>
-                            <Input value="{NSuser>/repassword}"  type="password"/>
+                            <Input value="{NSuser>/repassword}"  type="Password"/>
                         </HBox>
                          <HBox>
                             <Text text="Email" wdith="100px" class="customTextDark sapUiTinyMarginEnd sapMLabel"/>

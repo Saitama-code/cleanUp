@@ -26,6 +26,10 @@
   padding: 1rem;
 }
 
+.aboutUsText{
+     font-size: 20px !important;
+}
+
 /*
 HARI
 */
@@ -48,3 +52,5 @@ HARI
     position: relative;
     width: 120px;
 }
+
+

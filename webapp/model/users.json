@@ -11,6 +11,16 @@
             "email": "utkarsh@sap.com"
         },
         {
+            "name": "Ankit",
+            "password": "io",
+            "state": "Jharkhand",
+            "district": "Gumla",
+            "firstName": "Ankit",
+            "lastName": ".",
+            "phone": "+911000000001",
+            "email": "ankit@sap.com"
+        },
+        {
             "name": "naruto",
             "password": "io",
             "state": "Jharkhand",

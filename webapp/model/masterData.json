@@ -26,6 +26,17 @@
                                 "paper",
                                 "wood"
                             ]
+                        },
+                        {
+                            "name": "Utkarsh Kabariwala",
+                            "phone": "+911000000001",
+                            "rating": 4.4,
+                            "accept": [
+                                "plastic",
+                                "metal",
+                                "paper",
+                                "wood"
+                            ]
                         }
                     ],
                     "plants": [
@@ -54,6 +65,21 @@
                                 "glass",
                                 "metal"
                             ]
+                        },
+                        {
+                            "name": "Hari's Plant",
+                            "phone": "+911000000001",
+                            "rating": 4.5,
+                            "accept": [
+                                "plastic",
+                                "concrete",
+                                "bricks",
+                                "wood",
+                                "tiles",
+                                "pvc pipes",
+                                "glass",
+                                "metal"
+                            ]
                         }
                     ],
                     "govContact": [
@@ -64,10 +90,10 @@
                             "email":"utkarsh@sap.com"
                         },
                         {
-                            "name": "Kajal Buchchan",
+                            "name": "Rupesh Banwari",
                             "phone": "+911000000001",
                             "Designation": "Dumping yard manager",
-                            "email":"utkarsh@sap.com"
+                            "email":"rupesh.banwari@sap.com"
                         }
                     ]
                 },

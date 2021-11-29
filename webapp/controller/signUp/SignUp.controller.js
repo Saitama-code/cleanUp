@@ -45,6 +45,10 @@ sap.ui.define([
                 this.getView().setModel(new JSONModel({}), "locationL");
         },
         onRoutePatternMatched: function () {
+            var stateDD=this.byId("CBstate");
+            var districtDD=this.byId("CBDistrict");
+            stateDD.clearSelection();
+            districtDD.clearSelection();
             this.getView().setModel(new JSONModel({
                 "name": "",
                 "firstName": "",

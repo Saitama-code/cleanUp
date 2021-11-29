@@ -21,7 +21,8 @@ sap.ui.define([
             },
             onRoutePatternMatched: function () {
                 this.s = "0";
-
+                var arrayOfItems=this.byId("_IDGenColumnListItem1");
+                console.log(arrayOfItems);
 
                 this.getView().setModel(this.getOwnerComponent().getModel("masterData"), "masterData");
                 

@@ -50,7 +50,7 @@
                                 <ObjectIdentifier id="_IDGenObjectIdentifier1" title="{SolutionModel>name}" />
                                 <Text id="_IDGenText5" text="{SolutionModel>quantity}"/>
                                 <Text text="{SolutionModel>remark}"/>
-                                <ComboBox id="options" placeholder="Choose Solution provider" selectionChange="optionListChange" items="{path: 'SolutionModel>optionsList'}">
+                                <ComboBox selectedKey="" id="options" placeholder="Choose Solution provider" selectionChange="optionListChange" items="{path: 'SolutionModel>optionsList'}">
                                     <core:Item key="{SolutionModel>name}" text="{SolutionModel>name}" />
                                 </ComboBox>
                                 	<FlexBox
